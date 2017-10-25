@@ -1,4 +1,5 @@
 window.onload = function() {
+  /* ====================== 全局变量 ====================== */
   var colorPicker = document.querySelector(".color-picker");
   var colorShow = document.querySelector("body");
   var redRange = document.querySelector("#red");
@@ -10,7 +11,18 @@ window.onload = function() {
   var pickerTitle = document.querySelector(".picker-title");
   var logo = document.querySelector(".logo");
   var footer = document.querySelector(".footer > a");
+  var colorDashboard = document.getElementById("color-dashboard");
+  var randomBtn = document.getElementById("random-btn");
 
+  /* ====================== 页面初始化 ====================== */
+  // 一开始进出页面时，随机产生一个颜色
+  randomColor();
+  // 改变页面文字颜色和滑动条背景颜色
+  changeTextColor(redRange.value, greenRange.value, blueRange.value);  
+  // 改变页面颜色（背景色）
+  changeColor();
+
+  /* ====================== 函数 ====================== */
   // 函数：把颜色值由十进制转化成十六进制(hex)
   function transformToHex(color) {
     var hex = parseInt(color).toString(16);
@@ -20,6 +32,14 @@ window.onload = function() {
       return hex;
     }
   }
+
+  // 函数：改变页面颜色
+  function changeColor() {
+    colorShow.style.backgroundColor = "rgb(" + redRange.value + "," + greenRange.value + "," + blueRange.value + ")";
+    console.log(colorShow.style.backgroundColor);
+    colorCode.innerHTML = "#" + transformToHex(redRange.value) + transformToHex(greenRange.value) + transformToHex(blueRange.value);
+    changeTextColor(redRange.value, greenRange.value, blueRange.value);    
+  } 
 
   // 函数：改变页面文字颜色和滑动条背景颜色
   function changeTextColor(redCurrent, greenCurrent, blueCurrent) {
@@ -47,54 +67,54 @@ window.onload = function() {
     }
   }
 
-  // 获取当前颜色值
-  var redCurrent = redRange.value;
-  var greenCurrent = greenRange.value;
-  var blueCurrent = blueRange.value;
-  colorShow.style.backgroundColor = "rgb(" + redCurrent + "," + greenCurrent + "," + blueCurrent + ")";
-  colorCode.innerHTML = "#" + transformToHex(redCurrent) + transformToHex(greenCurrent) + transformToHex(blueCurrent);
+  // 函数：随机产生颜色的函数
+  function randomColor() {
+    //Math.floor(Math.random() * choices + lowerValue)
+    redRange.value = Math.floor(Math.random() * 255 + 0);
+    greenRange.value = Math.floor(Math.random() * 255 + 0);
+    blueRange.value = Math.floor(Math.random() * 255 + 0);    
+  }
 
-  // 监听红色
+  /* ====================== 事件处理程序 ====================== */
+  // 监听红色<input type="range">
   redRange.onmousedown = function() { 
     document.onmousemove = function() {
-      if (redRange.value != redCurrent) {
-        // console.log(redRange.value);
-        redCurrent = redRange.value;
-        colorShow.style.backgroundColor = "rgb(" + redCurrent + "," + greenCurrent + "," + blueCurrent + ")";
-        console.log(colorShow.style.backgroundColor);
-        colorCode.innerHTML = "#" + transformToHex(redCurrent) + transformToHex(greenCurrent) + transformToHex(blueCurrent);
-        changeTextColor(redCurrent, greenCurrent, blueCurrent);
-      }
+      changeColor();
     }
   };
 
-  // 监听绿色
+  // 监听绿色<input type="range">
   greenRange.onmousedown = function() { 
     document.onmousemove = function() {
-      if (greenRange.value != greenCurrent) {
-        // console.log(greenRange.value);
-        greenCurrent = greenRange.value;
-        colorShow.style.backgroundColor = "rgb(" + redCurrent + "," + greenCurrent + "," + blueCurrent + ")";
-        console.log(colorShow.style.backgroundColor);
-        colorCode.innerHTML = "#" + transformToHex(redCurrent) + transformToHex(greenCurrent) + transformToHex(blueCurrent);
-        changeTextColor(redCurrent, greenCurrent, blueCurrent);
-      }
+      changeColor();
     }
   };
 
-  // 监听蓝色
+  // 监听蓝色<input type="range">
   blueRange.onmousedown = function() { 
     document.onmousemove = function() {
-      if (blueRange.value != blueCurrent) {
-        // console.log(blueRange.value);
-        blueCurrent = blueRange.value;
-        colorShow.style.backgroundColor = "rgb(" + redCurrent + "," + greenCurrent + "," + blueCurrent + ")";
-        console.log(colorShow.style.backgroundColor);
-        colorCode.innerHTML = "#" + transformToHex(redCurrent) + transformToHex(greenCurrent) + transformToHex(blueCurrent);
-        changeTextColor(redCurrent, greenCurrent, blueCurrent);
-      }
+      changeColor();
     }
   };
+
+  // 颜色选择面板按钮（#color-dashboard）
+  colorDashboard.onclick = function() {
+    if (colorPicker.style.display == "none") {
+      colorPicker.style.display = null;
+    } else {
+      colorPicker.style.display = "none";
+    }
+  };
+
+  // 随机按钮（#random-btn），按了以后会调用randomColor随机生成颜色
+  randomBtn.onclick = function() {
+    // 随机生成颜色
+    randomColor();
+    // 改变页面颜色
+    changeColor();
+    // 改变页面文字颜色和滑动条背景颜色
+    changeTextColor(redRange.value, greenRange.value, blueRange.value);    
+  }
 
 };
 

@@ -10,14 +10,19 @@
     <span>COLOR-PICKER</span>
   </div>
 
-  <div class="color-picker">
+  <div class="button-area">
+    <button id="color-dashboard">Dashboard</button>
+    <button id="random-btn">Random</button>
+  </div>
+
+  <div class="color-picker" style="display: none">
     <span class="picker-title">RGB</span>
     <label>Red</label>
-    <input type="range" class="colorRange" id="red" value="118" max="255">
+    <input type="range" class="colorRange" id="red" max="255">
     <label>Green</label>
-    <input type="range" class="colorRange" id="green" value="217" max="255">
+    <input type="range" class="colorRange" id="green" max="255">
     <label>Blue</label>
-    <input type="range" class="colorRange" id="blue" value="232" max="255">
+    <input type="range" class="colorRange" id="blue" max="255">
   </div>
 
   <div class="showColorCode">

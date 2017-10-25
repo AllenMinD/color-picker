@@ -23,10 +23,33 @@ a {
   text-transform: uppercase;
 }
 
+/* 按钮区域 */
+.button-area {
+  position: fixed;
+  top: 5%;
+  right: 5%; 
+}
+
+/* color-dashboard按钮 */
+#color-dashboard {
+  border: 1px solid #222;
+  padding:  10px;
+  margin-right: 30px;
+  cursor: pointer;     
+}
+
+/* random按钮 */
+#random-btn {
+  border: 1px solid #222;
+  padding:  10px;
+  cursor: pointer;      
+}
+
+
 /* 颜色设置面板(.color-picker) */
 .color-picker {
   position: fixed;
-  top: 5%;
+  top: 15%;
   right: 5%;
   border: 1px solid #222;
   padding:  10px;
