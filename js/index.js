@@ -13,6 +13,7 @@ window.onload = function() {
   var footer = document.querySelector(".footer > a");
   var colorDashboard = document.getElementById("color-dashboard");
   var randomBtn = document.getElementById("random-btn");
+  var btnList = document.getElementsByClassName("btn-list");
 
   /* ====================== 页面初始化 ====================== */
   // 一开始进出页面时，随机产生一个颜色
@@ -54,6 +55,10 @@ window.onload = function() {
         label.item(i).style.color = "white";
         colorBar.item(i).style.backgroundColor = "white";      
       }
+      for (var i=0; i<2; i++){
+        btnList.item(i).style.color = "white";
+        btnList.item(i).style.border = "1px solid white";
+      }
     } else {
       colorCode.style.color = "#222";
       pickerTitle.style.color = "#222";
@@ -64,6 +69,10 @@ window.onload = function() {
         label.item(i).style.color = "#222";
         colorBar.item(i).style.backgroundColor = "#222";      
       }
+      for (var i=0; i<2; i++){
+        btnList.item(i).style.color = "#222";
+        btnList.item(i).style.border = "1px solid #222";
+      }      
     }
   }
 

@@ -24,32 +24,31 @@ a {
 }
 
 /* 按钮区域 */
-.button-area {
+.option-area {
   position: fixed;
-  top: 5%;
+  top: 3%;
   right: 5%; 
 }
 
-/* color-dashboard按钮 */
+
+/* 按钮样式 */
+.btn-list {
+  border: 1px solid #222;
+  padding:  10px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;  /* 背景色设为透明 */  
+}
+
+/* color-dashboard按钮的margin-right */
 #color-dashboard {
-  border: 1px solid #222;
-  padding:  10px;
-  margin-right: 30px;
-  cursor: pointer;     
+  margin-right: 30px;     
 }
-
-/* random按钮 */
-#random-btn {
-  border: 1px solid #222;
-  padding:  10px;
-  cursor: pointer;      
-}
-
 
 /* 颜色设置面板(.color-picker) */
 .color-picker {
   position: fixed;
-  top: 15%;
+  top: 12%;
   right: 5%;
   border: 1px solid #222;
   padding:  10px;
@@ -97,7 +96,7 @@ input[type=range]::-webkit-slider-thumb {
 /* logo */
 .logo {
   position: absolute;
-  top: 10px;
+  top: 3%;
   left: 10px;
   font-size: 20px;
 }
